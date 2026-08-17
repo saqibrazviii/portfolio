@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MO SAKIB RAZA — Cyber Security Portfolio</title>
+  <meta name="description" content="Portfolio of MO SAKIB RAZA, Cyber Security Intern at CodeAlpha and aspiring bug hunter." />
+  <style>
+    :root {
+      --bg: #070a12;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-2: rgba(255, 255, 255, 0.085);
+      --text: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.7);
+      --muted-2: rgba(255, 255, 255, 0.55);
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #4cc9f0;
+      --accent-2: #f72585;
+      --good: #56f39a;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.5);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(76, 201, 240, 0.16), transparent 55%),
+        radial-gradient(900px 520px at 80% 20%, rgba(247, 37, 133, 0.12), transparent 45%),
+        radial-gradient(900px 500px at 50% 90%, rgba(86, 243, 154, 0.09), transparent 45%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(7, 10, 18, 0.66);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(76, 201, 240, 0.95), rgba(247, 37, 133, 0.85));
+      box-shadow: 0 12px 40px rgba(76, 201, 240, 0.22);
+      position: relative;
+      overflow: hidden;
+    }
+    .logo:after {
+      content: "";
+      position: absolute;
+      inset: -30px;
+      background: conic-gradient(from 180deg, rgba(255,255,255,0.0), rgba(255,255,255,0.55), rgba(255,255,255,0.0));
+      transform: rotate(10deg);
+      opacity: 0.35;
+      animation: spin 7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(370deg); } }
+
+    .navlinks {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .navlinks a {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 12px;
+    }
+    .navlinks a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      text-decoration: none;
+    }
+
+    .cta {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid rgba(76, 201, 240, 0.35);
+      background: rgba(76, 201, 240, 0.08);
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 14px;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .cta:hover { text-decoration: none; transform: translateY(-1px); background: rgba(76, 201, 240, 0.12); }
+
+    .hero {
+      padding: 48px 0 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card:before {
+      content: "";
+      position: absolute;
+      top: -140px;
+      left: -120px;
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, rgba(76, 201, 240, 0.35), transparent 60%);
+      filter: blur(1px);
+      pointer-events: none;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--good);
+      box-shadow: 0 0 0 6px rgba(86, 243, 154, 0.12);
+    }
+
+    .hero-title {
+      margin: 12px 0 10px;
+      font-size: clamp(30px, 3.3vw, 46px);
+      line-height: 1.1;
+      letter-spacing: -0.6px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, var(--accent), rgba(255,255,255,0.92), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-weight: 800;
+      font-size: 14px;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      user-select: none;
+    }
+    .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,0.085); border-color: rgba(255,255,255,0.2); }
+
+    .btn-primary {
+      border-color: rgba(76, 201, 240, 0.35);
+      background: rgba(76, 201, 240, 0.12);
+    }
+    .btn-primary:hover { background: rgba(76, 201, 240, 0.16); }
+
+    .side-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.04);
+    }
+    .stat .label { color: var(--muted-2); font-weight: 700; font-size: 12px; }
+    .stat .value { margin-top: 6px; font-size: 18px; font-weight: 900; }
+    .pill-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.88);
+    }
+
+    section { padding: 22px 0; }
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .section-title h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+    .section-title p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 10px 34px rgba(0,0,0,0.28);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card .tag {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.85);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .card h3 {
+      margin: 12px 0 6px;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .card .links {
+      margin-top: 12px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+      font-size: 13px;
+      color: rgba(255,255,255,0.88);
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+    }
+    .link:hover { text-decoration: none; background: rgba(255,255,255,0.07); }
+
+    .skill-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+    .skill {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.9);
+      font-size: 13px;
+    }
+
+    .timeline { display: grid; gap: 12px; }
+    .entry {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.045);
+    }
+    .when { color: var(--muted-2); font-weight: 900; font-size: 12px; }
+    .entry h3 { margin: 2px 0 6px; font-size: 15px; }
+    .entry p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    .form { display: grid; gap: 10px; }
+    label { font-weight: 900; font-size: 13px; color: rgba(255,255,255,0.85); }
+    input, textarea {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      outline: none;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+
+    input:focus, textarea:focus {
+      border-color: rgba(76, 201, 240, 0.5);
+      box-shadow: 0 0 0 4px rgba(76, 201, 240, 0.14);
+    }
+
+    .mini { color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+    .aside-links { display: grid; gap: 10px; align-content: start; }
+
+    footer {
+      padding: 30px 0 45px;
+      color: var(--muted-2);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .contact-card { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .navlinks { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px; line-height:1.1;">MO SAKIB RAZA</div>
+          <div style="font-size:12px; color: var(--muted); font-weight:800;">Cyber Security Intern @ CodeAlpha</div>
+        </div>
+      </div>
+
+      <nav class="navlinks" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="cta" href="#contact" title="Jump to contact">
+        <span>Get in touch</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="about">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="kicker"><span class="dot"></span> Cyber Security Intern at CodeAlpha</div>
+          <h1 class="hero-title">Passionate about <span class="gradient">finding vulnerabilities</span> and securing systems.</h1>
+          <p class="hero-sub">
+            I'm a detail-oriented cybersecurity professional and aspiring bug hunter focused on network security, vulnerability discovery, and security research.
+            Currently developing network security tools at CodeAlpha while actively participating in bug bounty programs.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects <span aria-hidden="true">↗</span></a>
+            <a class="btn" href="#skills">Skills Stack <span aria-hidden="true">⌁</span></a>
+            <a class="btn" href="#contact">Get In Touch <span aria-hidden="true">✉</span></a>
+          </div>
+        </div>
+
+        <aside class="side-card">
+          <div class="stat">
+            <div class="label">Primary Focus</div>
+            <div class="value">Network • Detection • Analysis</div>
+          </div>
+          <div class="stat">
+            <div class="label">Current Role</div>
+            <div class="pill-row" aria-label="Training tags">
+              <span class="pill">Scapy</span>
+              <span class="pill">Snort</span>
+              <span class="pill">Python</span>
+            </div>
+          </div>
+          <div class="stat">
+            <div class="label">Education</div>
+            <div class="value">BCA 2025–2028</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>Hands-on work in cybersecurity and network monitoring.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="tag">🛰️ Network Sniffer</div>
+          <h3>Python Packet Capture & Analysis</h3>
+          <p>
+            Developing an advanced network sniffer program using Scapy library.
+            Captures and analyzes network traffic to identify protocols, suspicious patterns, and potential threats.
+          </p>
+          <div class="links">
+            <a class="link" href="https://github.com/saqibrazviii" aria-label="GitHub link">GitHub ↗</a>
+            <a class="link" href="#" aria-label="Documentation link">Docs ↗</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="tag">🛡️ Intrusion Detection</div>
+          <h3>Snort NIDS Configuration</h3>
+          <p>
+            Configuring network intrusion detection system rules using Snort to monitor and alert on malicious activities.
+            Focused on effective threat detection with minimal false positives.
+          </p>
+          <div class="links">
+            <a class="link" href="#" aria-label="Rules documentation">Rules ↗</a>
+            <a class="link" href="#" aria-label="Configuration guide">Config ↗</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="tag">🐛 Bug Hunting</div>
+          <h3>Vulnerability Research</h3>
+          <p>
+            Finding and responsibly disclosing security vulnerabilities through active bug bounty participation and security research.
+          </p>
+          <div class="links">
+            <a class="link" href="https://tryhackme.com/p/saqibrazviii" aria-label="TryHackMe profile">TryHackMe ↗</a>
+            <a class="link" href="https://www.hackerone.com/saqibrazviii" aria-label="HackerOne profile">HackerOne ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title">
+        <h2>Skills</h2>
+        <p>Core competencies for security research and bug hunting.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="tag">🧠 Security Fundamentals</div>
+          <h3>Threat Analysis & Detection</h3>
+          <p>OWASP Top 10, secure coding principles, and practical exploitation in controlled environments.</p>
+          <div class="skill-list" style="margin-top:12px;">
+            <span class="skill">OWASP Top 10</span>
+            <span class="skill">Auth & Session Security</span>
+            <span class="skill">Burp Suite</span>
+            <span class="skill">TCP/IP</span>
+            <span class="skill">Linux</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="tag">🛠️ Tooling & Automation</div>
+          <h3>Security Tools</h3>
+          <p>Building utilities and automating analysis for efficient vulnerability discovery and reporting.</p>
+          <div class="skill-list" style="margin-top:12px;">
+            <span class="skill">Python</span>
+            <span class="skill">Scapy</span>
+            <span class="skill">Snort</span>
+            <span class="skill">SQL</span>
+            <span class="skill">Bash</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="tag">🔍 Bug Hunting</div>
+          <h3>Vulnerability Research</h3>
+          <p>Finding and responsibly disclosing security vulnerabilities through active bug bounty participation and security research.</p>
+          <div class="skill-list" style="margin-top:12px;">
+            <span class="skill">Vulnerability Discovery</span>
+            <span class="skill">Security Research</span>
+            <span class="skill">Bug Bounty</span>
+            <span class="skill">Exploit Development</span>
+            <span class="skill">OSINT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-title">
+        <h2>Experience</h2>
+        <p>Professional experience and academic background.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="entry">
+          <div class="when">June 2026 — Present</div>
+          <div>
+            <h3>Cyber Security Intern @ CodeAlpha</h3>
+            <p>Developing network sniffer programs with Scapy, configuring Snort intrusion detection rules, and performing secure coding reviews with manual vulnerability analysis.</p>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="when">2025 — 2028</div>
+          <div>
+            <h3>Bachelor of Computer Application (BCA)</h3>
+            <p>Currently pursuing a degree in Computer Applications from Future University, Bareilly, focused on cybersecurity specialization.</p>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="when">Ongoing</div>
+          <div>
+            <h3>Continuous Learning</h3>
+            <p>Actively building skills in network analysis, vulnerability discovery, and secure system design through hands-on projects.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Reach out to discuss cybersecurity opportunities and collaborations.</p>
+      </div>
+
+      <div class="card contact-card">
+        <div class="form" aria-label="Contact form">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" autocomplete="name" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project or opportunity..."></textarea>
+          </div>
+          <button class="btn btn-primary" type="button" onclick="handleContact()">
+            Send Message <span aria-hidden="true">→</span>
+          </button>
+          <div class="mini" id="contactStatus"></div>
+        </div>
+
+        <div class="aside-links">
+          <div class="stat">
+            <div class="label">Email</div>
+            <div class="value" style="font-size:16px;">saqibrazviii@gmail.com</div>
+            <div class="mini">Get in touch anytime.</div>
+          </div>
+          <a class="link" href="https://github.com/saqibrazviii" aria-label="GitHub profile">GitHub ↗</a>
+          <a class="link" href="https://www.linkedin.com/in/saqibrazviii" aria-label="LinkedIn profile">LinkedIn ↗</a>
+          <a class="link" href="https://tryhackme.com/p/saqibrazviii" aria-label="TryHackMe profile">TryHackMe ↗</a>
+          <a class="link" href="https://www.hackerone.com/saqibrazviii" aria-label="HackerOne profile">HackerOne ↗</a>
+        </div>
+      </div>
+
+      <footer>
+        <div>© <span id="year"></span> MO SAKIB RAZA — Cyber Security Intern @ CodeAlpha</div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function handleContact() {
+      const status = document.getElementById('contactStatus');
+      const name = (document.getElementById('name').value || '').trim();
+      const email = (document.getElementById('email').value || '').trim();
+      const message = (document.getElementById('message').value || '').trim();
+
+      if (!name || !email || !message) {
+        status.textContent = 'Fill in name, email, and message.';
+        status.style.color = 'rgba(255, 209, 102, 0.95)';
+        return;
+      }
+
+      status.textContent = 'Demo: message captured locally. Connect a backend or use a mailto: link to send for real.';
+      status.style.color = 'rgba(86, 243, 154, 0.95)';
+
+      const subject = encodeURIComponent('CyberSec portfolio contact');
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+      const mail = `mailto:saqibrazviii@gmail.com?subject=${subject}&body=${body}`;
+
+      setTimeout(() => {
+        window.location.href = mail;
+      }, 600);
+    }
+  </script>
+</body>
+</html>
